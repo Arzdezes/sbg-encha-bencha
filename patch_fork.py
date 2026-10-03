@@ -21,7 +21,7 @@ object PresetScripts {
         identifier = ScriptIdentifier("github.com/Arzdezes/sbg-encha-bencha/sci-fi-client"),
         displayName = "SBG Sci-Fi Client",
         downloadUrl = "https://raw.githubusercontent.com/Arzdezes/sbg-encha-bencha/master/sbg-scifi-client.user.js",
-        updateUrl = null,
+        updateUrl = "https://raw.githubusercontent.com/Arzdezes/sbg-encha-bencha/master/sbg-scifi-client.user.js",
         enabledByDefault = true,
         description = "Visual-only shell for SBG. No automation or gameplay advantage.",
     )
@@ -34,8 +34,11 @@ object PresetScripts {
 # There are no third-party preset conflicts in this fork.
 (root / 'app/src/main/java/com/github/wrager/sbgscout/script/preset/StaticConflictRules.kt').write_text('''package com.github.wrager.sbgscout.script.preset
 
+import com.github.wrager.sbgscout.script.model.ScriptConflict
+import com.github.wrager.sbgscout.script.model.ScriptIdentifier
+
 class StaticConflictRules : ConflictRuleProvider {
-    override fun getRules(): List<ConflictRule> = emptyList()
+    override fun conflictsFor(identifier: ScriptIdentifier): List<ScriptConflict> = emptyList()
 }
 ''', encoding='utf-8')
 
